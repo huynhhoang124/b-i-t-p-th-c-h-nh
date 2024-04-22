@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ quản lý đào tạo </title>
+    <link rel="stylesheet" href="bai1.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Trang chủ quản lý đào tạo </h1>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section id="departments">
+                <h2>Quản lý Khoa</h2>
+                <button onclick="addDepartment()">Thêm Khoa</button>
+                <ul id="departmentList">
+                    <!-- Danh sách các khoa sẽ được hiển thị ở đây -->
+                </ul>
+            </section>
+
+            <section id="majors">
+                <h2>Quản lý Ngành</h2>
+                <button onclick="addMajor()">Thêm Ngành</button>
+                <ul id="majorList">
+                    <!-- Danh sách các ngành sẽ được hiển thị ở đây -->
+                </ul>
+            </section>
+
+            <section id="students">
+                <h2>Quản lý Sinh viên</h2>
+                <button onclick="addStudent()">Thêm Sinh viên</button>
+                <ul id="studentList">
+                    <!-- Danh sách sinh viên sẽ được hiển thị ở đây -->
+                </ul>
+            </section>
+
+            <section id="classes">
+                <h2>Quản lý Lớp</h2>
+                <button onclick="addClass()">Thêm Lớp</button>
+                <ul id="classList">
+                    <!-- Danh sách các lớp sẽ được hiển thị ở đây -->
+                </ul>
+            </section>
+
+            <section id="teachers">
+                <h2>Quản lý Giáo viên</h2>
+                <button onclick="addTeacher()">Thêm Giáo viên</button>
+                <ul id="teacherList">
+                    <!-- Danh sách các giáo viên sẽ được hiển thị ở đây -->
+                </ul>
+            </section>
+
+            <section id="education-systems">
+                <h2>Quản lý Hệ đào tạo</h2>
+                <button onclick="addEducationSystem()">Thêm Hệ đào tạo</button>
+                <ul id="educationSystemList">
+                    <!-- Danh sách các hệ đào tạo sẽ được hiển thị ở đây -->
+                </ul>
+            </section>
+
+            <section id="academic-years">
+                <h2>Quản lý Niên khóa</h2>
+                <button onclick="addAcademicYear()">Thêm Niên khóa</button>
+                <ul id="academicYearList">
+                    <!-- Danh sách các niên khóa sẽ được hiển thị ở đây -->
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Học Viện Công nghệ Bưu Chính Viễn Thông</p>
+        </div>
+    </footer>
+
+    <script src="bai1.js"></script>
+</body>
+
+</html>
