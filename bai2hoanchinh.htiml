@@ -1,0 +1,247 @@
+11:43
+Hiếu
+Nguyễn Hiếu
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Charts with Plotly.js</title>
+    <!-- Add Plotly.js library -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f8f9fa;
+          color: #333;
+          margin: 0;
+          padding: 0;
+      }
+
+      .container {
+          max-width: 800px;
+          margin: 50px auto;
+          background-color: #fff;
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+
+      h1, h2 {
+          text-align: center;
+          color: #333;
+      }
+
+      .chart-container {
+          margin-bottom: 40px;
+      }
+
+      .chart-description {
+          margin-top: 10px;
+          color: #666;
+          text-align: center;
+      }
+
+      p {
+          line-height: 1.6;
+      }
+
+      .control-panel {
+          margin-bottom: 20px;
+          text-align: center;
+      }
+
+      .control-panel label {
+          display: inline-block;
+          margin-right: 10px;
+      }
+  </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Interactive Charts with Plotly.js</h1>
+
+        <!-- Scatter Plot -->
+        <div id="scatter-plot" class="chart-container">
+            <h2>Scatter Plot</h2>
+            <div id="scatter-plot-chart"></div>
+            <div class="control-panel">
+                <label for="scatter-x-values">X Values:</label>
+                <input type="text" id="scatter-x-values" value="1, 2, 3, 4">
+                <label for="scatter-y-values">Y Values:</label>
+                <input type="text" id="scatter-y-values" value="10, 15, 13, 17">
+                <button onclick="updateScatterPlot()">Update Plot</button>
+            </div>
+        </div>
+
+        <!-- Line Chart -->
+        <div id="line-chart" class="chart-container">
+            <h2>Line Chart</h2>
+            <div id="line-chart-chart"></div>
+            <div class="control-panel">
+                <label for="line-x-values">X Values:</label>
+                <input type="text" id="line-x-values" value="1, 2, 3, 4">
+                <label for="line-y-values">Y Values:</label>
+                <input type="text" id="line-y-values" value="10, 15, 13, 17">
+                <button onclick="updateLineChart()">Update Plot</button>
+            </div>
+        </div>
+
+        <!-- Bar Chart -->
+        <div id="bar-chart" class="chart-container">
+            <h2>Bar Chart</h2>
+            <div id="bar-chart-chart"></div>
+            <div class="control-panel">
+                <label for="bar-x-values">X Values:</label>
+                <input type="text" id="bar-x-values" value="A, B, C, D">
+                <label for="bar-y-values">Y Values:</label>
+                <input type="text" id="bar-y-values" value="10, 20, 30, 40">
+                <button onclick="updateBarChart()">Update Plot</button>
+            </div>
+        </div>
+
+        <!-- Pie Chart -->
+        <div id="pie-chart" class="chart-container">
+            <h2>Pie Chart</h2>
+            <div id="pie-chart-chart"></div>
+            <div class="control-panel">
+                <label for="pie-labels">Labels:</label>
+                <input type="text" id="pie-labels" value="A, B, C, D">
+                <label for="pie-values">Values:</label>
+                <input type="text" id="pie-values" value="20, 30, 40, 50">
+                <button onclick="updatePieChart()">Update Plot</button>
+            </div>
+        </div>
+
+        <!-- Donut Chart -->
+        <div id="donut-chart" class="chart-container">
+            <h2>Donut Chart</h2>
+            <div id="donut-chart-chart"></div>
+            <div class="control-panel">
+                <label for="donut-labels">Labels:</label>
+                <input type="text" id="donut-labels" value="A, B, C, D">
+                <label for="donut-values">Values:</label>
+                <input type="text" id="donut-values" value="20, 30, 40, 50">
+                <button onclick="updateDonutChart()">Update Plot</button>
+            </div>
+        </div>
+
+        <!-- Bubble Chart -->
+        <div id="bubble-chart" class="chart-container">
+            <h2>Bubble Chart</h2>
+            <div id="bubble-chart-chart"></div>
+            <div class="control-panel">
+                <label for="bubble-x-values">X Values:</label>
+                <input type="text" id="bubble-x-values" value="1, 2, 3, 4">
+                <label for="bubble-y-values">Y Values:</label>
+                <input type="text" id="bubble-y-values" value="10, 20, 30, 40">
+                <label for="bubble-size-values">Size Values:</label>
+                <input type="text" id="bubble-size-values" value="20, 30, 40, 50">
+                <button onclick="updateBubbleChart()">Update Plot</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Scatter Plot
+        var scatterPlotData = [
+            { x: [1, 2, 3, 4], y: [10, 15, 13, 17], mode: 'markers', type: 'scatter' }
+        ];
+
+        // Function to update Scatter Plot
+        function updateScatterPlot() {
+            var xValues = document.getElementById('scatter-x-values').value.split(',').map(Number);
+            var yValues = document.getElementById('scatter-y-values').value.split(',').map(Number);
+            var updatedData = { x: xValues, y: yValues, mode: 'markers', type: 'scatter' };
+            Plotly.newPlot('scatter-plot-chart', [updatedData]);
+        }
+
+        Plotly.newPlot('scatter-plot-chart', scatterPlotData);
+
+        // Line Chart
+        var lineChartData = [
+            { x: [1, 2, 3, 4], y: [10, 15, 13, 17], type: 'line' }
+        ];
+
+        function updateLineChart() {
+            var xValues = document.getElementById('line-x-values').value.split(',').map(Number);
+            var yValues = document.getElementById('line-y-values').value.split(',').map(Number);
+            var updatedData = { x: xValues, y: yValues, type: 'line' };
+            Plotly.newPlot('line-chart-chart', [updatedData]);
+        }
+
+        Plotly.newPlot('line-chart-chart', lineChartData);
+
+        // Bar Chart
+        var barChartData = [
+            { x: ['A', 'B', 'C', 'D'], y: [10, 20, 30, 40], type: 'bar' }
+        ];
+
+        function updateBarChart() {
+            var xValues = document.getElementById('bar-x-values').value.split(',');
+            var yValues = document.getElementById('bar-y-values').value.split(',').map(Number);
+            var updatedData = { x: xValues, y: yValues, type: 'bar' };
+            Plotly.newPlot('bar-chart-chart', [updatedData]);
+        }
+
+        Plotly.newPlot('bar-chart-chart', barChartData);
+
+        // Pie Chart
+        var pieChartData = [
+            { labels: ['A', 'B', 'C', 'D'], values: [20, 30, 40, 50], type: 'pie' }
+        ];
+
+        function updatePieChart() {
+            var labels = document.getElementById('pie-labels').value.split(',');
+            var values = document.getElementById('pie-values').value.split(',').map(Number);
+            var updatedData = { labels: labels, values: values, type: 'pie' };
+            Plotly.newPlot('pie-chart-chart', [updatedData]);
+        }
+
+        Plotly.newPlot('pie-chart-chart', pieChartData);
+
+        // Donut Chart
+        var donutChartData = [
+            { labels: ['A', 'B', 'C', 'D'], values: [20, 30, 40, 50], type: 'pie', hole: 0.5 }
+        ];
+
+        function updateDonutChart() {
+            var labels = document.getElementById('donut-labels').value.split(',');
+            var values = document.getElementById('donut-values').value.split(',').map(Number);
+            var updatedData = { labels: labels, values: values, type: 'pie', hole: 0.5 };
+            Plotly.newPlot('donut-chart-chart', [updatedData]);
+        }
+
+        Plotly.newPlot('donut-chart-chart', donutChartData);
+
+        // Bubble Chart
+        var bubbleChartData = [
+            {
+                x: [1, 2, 3, 4],
+                y: [10, 20, 30, 40],
+                mode: 'markers',
+                marker: {
+                    size: [20, 30, 40, 50]
+                }
+            }
+        ];
+
+        function updateBubbleChart() {
+            var xValues = document.getElementById('bubble-x-values').value.split(',').map(Number);
+            var yValues = document.getElementById('bubble-y-values').value.split(',').map(Number);
+            var sizeValues = document.getElementById('bubble-size-values').value.split(',').map(Number);
+            var updatedData = {
+                x: xValues,
+                y: yValues,
+                mode: 'markers',
+                marker: {
+                    size: sizeValues
+                }
+            };
+            Plotly.newPlot('bubble-chart-chart', [updatedData]);
+        }
+
+        Plotly.newPlot('bubble-chart-chart', bubbleChartData);
+    </script>
+</body>
+</html>
